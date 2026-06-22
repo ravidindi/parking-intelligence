@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+button,
+input,
+select {
+  border-radius: 0;
+}
+
+.input {
+  @apply w-full border border-[#cbd5e1] bg-white px-3 py-3 text-sm font-bold text-[#111827] outline-none transition focus:border-[#0f766e] focus:ring-2 focus:ring-[#99f6e4];
+}
+
+.city-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px),
+    radial-gradient(circle at 70% 60%, rgba(239, 68, 68, 0.35), transparent 24%),
+    radial-gradient(circle at 25% 30%, rgba(20, 184, 166, 0.28), transparent 22%);
+  background-size: 32px 32px, 32px 32px, 100% 100%, 100% 100%;
+}
+
+.command-scroll {
+  scrollbar-color: #0f766e rgba(15, 23, 42, 0.18);
+  scrollbar-width: thin;
+}
+
+.command-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.command-scroll::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.12);
+}
+
+.command-scroll::-webkit-scrollbar-thumb {
+  background: #0f766e;
+  border: 2px solid rgba(255, 255, 255, 0.65);
+  background-clip: content-box;
+}
+
+.parking-map-marker {
+  background: transparent;
+  border: 0;
+}
+
+.parking-map-marker span {
+  align-items: center;
+  border: 2px solid #ffffff;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.28);
+  color: #ffffff;
+  display: flex;
+  font-size: 10px;
+  font-weight: 900;
+  height: 34px;
+  justify-content: center;
+  line-height: 1;
+  min-width: 34px;
+  padding: 0 4px;
+}
+
+.leaflet-container {
+  background: #dbe4ee;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.city-risk-map.leaflet-container {
+  background: #060b14;
+}
+
+.city-risk-map .leaflet-tile {
+  filter: saturate(0.9) contrast(1.08);
+}
+
+.city-risk-marker {
+  background: transparent;
+  border: 0;
+}
+
+.city-risk-pin {
+  align-items: center;
+  border: 2px solid rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.42);
+  color: #ffffff;
+  display: flex;
+  font-size: 11px;
+  font-weight: 900;
+  height: 38px;
+  justify-content: center;
+  position: relative;
+  width: 38px;
+}
+
+.city-risk-pin::after {
+  border: 2px solid currentColor;
+  content: "";
+  inset: -8px;
+  opacity: 0.18;
+  position: absolute;
+}
+
+.city-risk-pin-high {
+  background: #dc2626;
+  color: #fecaca;
+}
+
+.city-risk-pin-medium {
+  background: #d97706;
+  color: #fff7ed;
+}
+
+.city-risk-pin-watch {
+  background: #0f766e;
+  color: #ccfbf1;
+}
+
+.city-risk-pin-selected {
+  animation: city-risk-pin-pop 0.55s ease-out, city-risk-pin-pulse 1.4s ease-in-out infinite;
+  border-color: #ffffff;
+  color: #ffffff;
+  font-size: 13px;
+  height: 54px;
+  width: 54px;
+}
+
+.city-risk-pin-selected::after {
+  animation: city-risk-ring 1.4s ease-out infinite;
+  border-color: #99f6e4;
+  inset: -14px;
+  opacity: 0.65;
+}
+
+.city-risk-tooltip {
+  background: #10151f;
+  border: 1px solid rgba(153, 246, 228, 0.55);
+  border-radius: 0;
+  color: #ffffff;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-weight: 800;
+}
+
+.city-risk-tooltip::before {
+  border-top-color: rgba(153, 246, 228, 0.55);
+}
+
+@keyframes city-risk-pin-pop {
+  0% {
+    transform: scale(0.65);
+  }
+  70% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes city-risk-pin-pulse {
+  0%,
+  100% {
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.42), 0 0 0 rgba(153, 246, 228, 0);
+  }
+  50% {
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.42), 0 0 28px rgba(153, 246, 228, 0.65);
+  }
+}
+
+@keyframes city-risk-ring {
+  0% {
+    opacity: 0.75;
+    transform: scale(0.72);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.42);
+  }
+}

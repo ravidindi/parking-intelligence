@@ -1,0 +1,8 @@
+{
+  "source": "data/jan to may police violation_anonymized791b166.csv",
+  "cleaned_rows": 298450,
+  "hotspot_rows": 25618,
+  "training_rows": 52495,
+  "top_hotspot": "BTP051 - Safina Plaza Junction",
+  "top_risk_score": 86.33
+}

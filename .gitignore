@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.mplconfig/
+.ultralytics/
+yolov8n.pt
+dashboard/node_modules/
+dashboard/dist/
+data/*.csv
+data/incidents.jsonl

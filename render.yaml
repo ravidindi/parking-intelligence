@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: parking-intelligence-api
+    runtime: python
+    plan: free
+    buildCommand: pip install --upgrade pip && pip install -r requirements-api.txt
+    startCommand: uvicorn src.api:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: BACKEND_CORS_ORIGINS
+        value: http://127.0.0.1:5173,http://localhost:5173
+      - key: BACKEND_CORS_REGEX
+        value: https://.*\.netlify\.app
+      - key: YOLO_CONFIG_DIR
+        value: /tmp/.ultralytics
+      - key: MPLCONFIGDIR
+        value: /tmp/.mplconfig
