@@ -5,6 +5,13 @@
 
 [build.environment]
   NODE_VERSION = "22"
+  VITE_API_BASE = "https://parking-intelligence-api-zlpk.onrender.com"
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://parking-intelligence-api-zlpk.onrender.com/:splat"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/*"
